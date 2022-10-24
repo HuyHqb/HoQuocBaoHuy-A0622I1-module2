@@ -101,6 +101,8 @@ public class CustomerServiceIplm implements CustomerService {
                     System.out.println("giới tính không hợp lệ vui lòng nhập lại");
                     newSex = scanner.nextLine();
                 }
+
+
                 System.out.println("Nhập Chứng minh mới: ");
                 String newIdCard = scanner.nextLine();
                 System.out.println("Nhập email mới: ");
