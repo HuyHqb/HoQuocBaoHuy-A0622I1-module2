@@ -122,11 +122,13 @@ public class Controller {
         display();
     }
 
+    //validate cccd
     public String inputCccd() {
         System.out.println("Nhập CCCD: ");
         return RegexData.regexStr(scanner.nextLine(), REGEX_CCCD, "CCCD không đúng định dạng!, vui lòng nhập lại");
     }
 
+    //check trùng cccd
     public boolean checkExistCccd(String input) {
         for (Account acc : accountList
         ) {
