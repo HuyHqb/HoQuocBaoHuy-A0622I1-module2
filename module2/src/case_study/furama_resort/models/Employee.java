@@ -1,6 +1,8 @@
 package case_study.furama_resort.models;
 
-public class Employee extends Person {
+import java.io.Serializable;
+
+public class Employee extends Person implements Serializable {
     private String level;
     private String position;
     private int salary;
@@ -11,7 +13,7 @@ public class Employee extends Person {
 
     public Employee(int id,
                     String name,
-                    int age,
+                    String age,
                     String sex,
                     String idCard,
                     String email,
@@ -22,6 +24,19 @@ public class Employee extends Person {
         this.level = level;
         this.position = position;
         this.salary = salary;
+    }
+
+    public Employee(String string) {
+        String[] data = string.split(",");
+        setId(Integer.parseInt(data[0]));
+        setName((data[1]));
+        setAge((data[2]));
+        setSex(data[3]);
+        setIdCard(data[4]);
+        setEmail(data[5]);
+        setLevel(data[6]);
+        setPosition(data[7]);
+        setSalary(Integer.parseInt(data[8]));
     }
 
     public String getLevel() {
@@ -48,6 +63,7 @@ public class Employee extends Person {
         this.salary = salary;
     }
 
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -56,5 +72,9 @@ public class Employee extends Person {
                 ", position='" + position + '\'' +
                 ", salary=" + salary +
                 '}';
+    }
+
+    public String getInfo() {
+        return getId() + "," + getName() + "," + getAge() + "," + getSex() + "," + getIdCard() + "," + getEmail() + "," + getLevel() + "," + getPosition() + "," + getSalary();
     }
 }

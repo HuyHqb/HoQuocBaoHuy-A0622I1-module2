@@ -1,8 +1,8 @@
 package case_study.furama_resort.controllers;
 
-import case_study.furama_resort.services.impl.CustomerServiceIplm;
-import case_study.furama_resort.services.impl.EmployeeServiceIplm;
-import case_study.furama_resort.services.impl.FacilityServiceIplm;
+import case_study.furama_resort.services.iplm.CustomerServiceIplm;
+import case_study.furama_resort.services.iplm.EmployeeServiceIplm;
+import case_study.furama_resort.services.iplm.FacilityServiceIplm;
 
 import java.util.Scanner;
 
@@ -49,6 +49,8 @@ public class FuramaController {
                     displayPromotionMenu();
                     break;
                 case 6:
+                    System.out.println("Cảm ơn bạn đã sử dụng hệ thống!");
+                    check = false;
                     break;
             }
         }
@@ -71,19 +73,26 @@ public class FuramaController {
             } catch (NumberFormatException e) {
                 System.out.println("you entered the wrong format, please type again from 1 to 4 :");
             }
-            switch (choice) {
-                case 1:
-                    employeeServiceIplm.display();
-                    break;
-                case 2:
-                    employeeServiceIplm.addNew();
-                    break;
-                case 3:
-                    employeeServiceIplm.edit();
-                    break;
-                case 4:
-                    employeeServiceIplm.delete();
-                    break;
+            try {
+                switch (choice) {
+                    case 1:
+                        employeeServiceIplm.display();
+                        break;
+                    case 2:
+                        employeeServiceIplm.addNew();
+                        break;
+                    case 3:
+                        employeeServiceIplm.edit();
+                        break;
+                    case 4:
+                        employeeServiceIplm.delete();
+                        break;
+                    case 5:
+                        displayMainMenu();
+                        break;
+                }
+            } catch (Exception e) {
+                System.out.println("error: " + e.getMessage());
             }
         }
     }
@@ -118,6 +127,9 @@ public class FuramaController {
                     customerServiceIplm.delete();
                     break;
                 case 5:
+                    displayMainMenu();
+                    break;
+
             }
         }
     }
@@ -149,7 +161,11 @@ public class FuramaController {
                 }
                 case 3: {
 
+                    break;
                 }
+                case 4:
+                    displayMainMenu();
+                    break;
             }
         }
     }
@@ -160,10 +176,10 @@ public class FuramaController {
         FacilityServiceIplm facilityServiceIplm = new FacilityServiceIplm();
 
         while (check) {
-            System.out.println("1. add new villa");
+            System.out.println("1. Add new villa");
             System.out.println("2. Add new house");
             System.out.println("3. Add new room");
-            System.out.println("4. Return main menu");
+            System.out.println("4. Return facility menu");
             Scanner sc = new Scanner(System.in);
             int choice = 0;
             try {
@@ -182,6 +198,7 @@ public class FuramaController {
                     facilityServiceIplm.addNewRoom();
                     break;
                 case 4:
+                    displayFacilityMenu();
                     break;
             }
         }
